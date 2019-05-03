@@ -3,9 +3,17 @@
   vars_files:
   - env_variables
   tasks:
+  - name: remove join_token
+    command: "rm -rf join*"
+
   - name: Copying token to worker nodes
     copy: src={{ token_file }} dest=join_token
 
-  - name: Joining worker nodes with kubernetes master
-    shell: "`grep -i 'kubeadm join' join_token`"
+  - name: excuting sed command
+    command: "sed -i.bak -e '1,63d' /root/join_token"
 
+  - name: chmod to join_token
+    command: "chmod 755 ~/join_token"
+
+  - name: Joining worker nodes with kubernetes master
+    shell: "/root/join_token"
