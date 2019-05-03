@@ -9,6 +9,9 @@
    - kubelet
 
   tasks:
+  - name: remove kubeadm
+    command: "kubeadm reset -f"
+
   - name: Removing Repo File of Kubernetes.
     file:
      path: /etc/yum.repos.d/kubernetes.repo
@@ -28,4 +31,3 @@
     - /etc/kubernetes/
     - /var/lib/etcd/
     - $HOME/.kube/
-
