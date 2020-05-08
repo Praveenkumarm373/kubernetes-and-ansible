@@ -1,5 +1,5 @@
 [kubernetes-master-nodes]
-192.168.1.22w
+192.168.1.22
 
 [kubernetes-worker-nodes]
 192.168.1.32
